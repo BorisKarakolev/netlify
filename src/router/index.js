@@ -4,15 +4,18 @@ import ComingSoon from "@/components/ComingSoon.vue";
 
 const routes = [
   {
-    path: '/',
-    component: ComingSoon
+    path: "/",
+    name: "Home",
+    component: ComingSoon,
   },
   {
     path: "/tvshows",
+    name: "TV Shows",
     component: TvShows,
   },
   {
     path: "/movies",
+    name: "Movies",
     component: ComingSoon,
   },
 ];

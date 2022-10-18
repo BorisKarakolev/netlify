@@ -5,12 +5,17 @@
         class="flex flex-nowrap justify-between h-full px-8 mx-auto bg-abn-green-1"
       >
         <div class="flex items-center space-x-3">
-          <a href="/" class="text-2xl mx-5">{{ company }}</a>
-          <a href="/tvshows" class="text-lg">{{ tabs.tvShows }}</a>
-          <a href="/movies" class="text-lg">{{ tabs.movies }}</a>
+          <router-link :to="{ name: 'Home' }" class="text-2xl mx-5">{{
+            company
+          }}</router-link>
+          <div v-for="tab in tabs" :key="tab">
+            <router-link :to="{ name: tab }" class="text-md">{{ tab }}</router-link>
+          </div>
         </div>
 
-        <h2 class="flex items-center h-full text-abn-yellow-1">Developed by {{ author }}</h2>
+        <h2 class="flex items-center h-full text-abn-yellow-1">
+          Developed by {{ author }}
+        </h2>
       </div>
     </div>
   </header>
@@ -22,10 +27,7 @@ export default {
   data() {
     return {
       company: "Netlify",
-      tabs: {
-        tvShows: "TV Shows",
-        movies: "Movies",
-      },
+      tabs: ["TV Shows", "Movies"],
       author: "Boris Karakolev",
     };
   },

@@ -17,12 +17,15 @@
       <div class="space-y-5">
         <dashboard-list
           :title="'Top 10 rated Tv Shows'"
-          :shows="getTopRated(10)"
+          :shows="getTopRated(shows, 10)"
         />
-        <dashboard-list :title="'Comedies'" :shows="getGenres('Comedy')" />
-        <dashboard-list :title="'Action'" :shows="getGenres('Action')" />
-        <dashboard-list :title="'Sport'" :shows="getGenres('Sports')" />
-        <dashboard-list :title="'Horror'" :shows="getGenres('Horror')" />
+        <dashboard-list
+          :title="'Comedies'"
+          :shows="getGenres(shows, 'Comedy')"
+        />
+        <dashboard-list :title="'Action'" :shows="getGenres(shows, 'Action')" />
+        <dashboard-list :title="'Sport'" :shows="getGenres(shows, 'Sports')" />
+        <dashboard-list :title="'Horror'" :shows="getGenres(shows, 'Horror')" />
       </div>
     </div>
   </div>
@@ -30,6 +33,7 @@
 
 <script>
 import DashboardList from "@/components/DashboardList.vue";
+import { getTopRated, getGenres } from "@/utils/helpers";
 export default {
   name: "TvShows",
   components: {
@@ -59,17 +63,8 @@ export default {
           console.log(err);
         });
     },
-    getTopRated(size) {
-      return this.shows
-        ?.sort((a, b) => b.rating.average - a.rating.average)
-        .slice(0, size);
-    },
-    getGenres(genreArg) {
-      return this.shows
-        ?.filter((show) => show.genres.some((genre) => genre === genreArg))
-        .sort((a, b) => b.rating.average - a.rating.average)
-        .slice(0, 10);
-    },
+    getTopRated,
+    getGenres,
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-black-1 text-white p-10">
+  <div class="w-full bg-abn-green-2 text-white p-10">
     <div
       v-if="loading"
       class="w-full h-screen text-6xl flex items-center justify-center"
@@ -23,9 +23,15 @@
           :title="'Comedies'"
           :shows="getGenres(shows, 'Comedy')"
         />
-        <dashboard-list :title="'Action'" :shows="getGenres(shows, 'Action')" />
-        <dashboard-list :title="'Sport'" :shows="getGenres(shows, 'Sports')" />
-        <dashboard-list :title="'Horror'" :shows="getGenres(shows, 'Horror')" />
+        <dashboard-list
+          :title="'Actions'"
+          :shows="getGenres(shows, 'Action')"
+        />
+        <dashboard-list :title="'Sports'" :shows="getGenres(shows, 'Sports')" />
+        <dashboard-list
+          :title="'Horrors'"
+          :shows="getGenres(shows, 'Horror')"
+        />
       </div>
     </div>
   </div>

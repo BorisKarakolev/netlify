@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 w-full text-sm h-16 bg-white">
+  <header class="sticky top-0 w-full text-sm h-16 z-10">
     <div
       class="flex flex-nowrap justify-between h-full px-8 mx-auto bg-abn-green-1 shadow-xl"
     >

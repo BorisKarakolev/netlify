@@ -5,7 +5,7 @@
       <show-search :search-show="searchShow" />
     </div>
     <loading-outlined
-      v-if="loading && shows && searchedShows"
+      v-if="loading"
       class="w-full text-6xl flex items-center justify-center"
     />
     <empty
@@ -16,7 +16,7 @@
     <div v-if="searchedShows && searchedShows.length > 0">
       <div class="grid grid-cols-10 gap-3">
         <div v-for="show in searchedShows" :key="show.show.id">
-          <img :src="show.show.image.medium" />
+          <img :src="show.show.image?.medium" />
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@ export default {
       searching: true,
       shows: null,
       searchedShows: null,
+      modalOpen: false,
     };
   },
   mounted() {
@@ -83,6 +84,9 @@ export default {
           .then((data) => {
             this.searching = false;
             this.searchedShows = data;
+            if (inputText === "") {
+              this.fetchShows();
+            }
             this.shows = null;
           })
           .catch((err) => {

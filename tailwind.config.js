@@ -12,7 +12,8 @@ module.exports = {
         "abn-green-1": "#009286",
         "abn-green-2": "#005554",
         "abn-yellow-1": "#FDB912",
-        "black-1": "#141414"
+        "black-1": "#141414",
+        "gray-1": "#757171"
       },
     },
   },

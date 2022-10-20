@@ -16,7 +16,7 @@
     <div v-if="searchedShows && searchedShows.length > 0">
       <div class="grid grid-cols-10 gap-3">
         <div v-for="show in searchedShows" :key="show.show.id">
-          <img :src="show.show.image?.medium" />
+          <image-modal :show="show.show" />
         </div>
       </div>
     </div>
@@ -36,6 +36,7 @@
 <script>
 import DashboardList from "@/components/DashboardList.vue";
 import ShowSearch from "@/components/ShowSearch.vue";
+import ImageModal from "@/components/Image.vue";
 import { getTopRated, getGenres } from "@/utils/helpers";
 import { Empty } from "ant-design-vue";
 import { LoadingOutlined } from "@ant-design/icons-vue";
@@ -44,6 +45,7 @@ export default {
   components: {
     DashboardList,
     ShowSearch,
+    ImageModal,
     LoadingOutlined,
     Empty,
   },
@@ -53,7 +55,6 @@ export default {
       searching: true,
       shows: null,
       searchedShows: null,
-      modalOpen: false,
     };
   },
   mounted() {

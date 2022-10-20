@@ -1,7 +1,7 @@
 <template>
   <header class="sticky top-0 w-full text-sm h-16 z-10">
     <div
-      class="flex flex-nowrap justify-between h-full px-8 mx-auto bg-abn-green-1 shadow-xl"
+      class="flex flex-nowrap items-center justify-start h-full px-8 mx-auto bg-abn-green-1 shadow-xl"
     >
       <div class="flex items-center space-x-3 text-abn-yellow-1">
         <router-link :to="{ name: 'Home' }" class="text-2xl mx-5 font-bold">{{

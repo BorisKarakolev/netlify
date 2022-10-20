@@ -1,6 +1,6 @@
 <template>
   <form
-    class="flex items-center w-full h-12 border border-solid border-black-1 rounded-3xl p-3 shadow-lg"
+    class="flex items-center w-full md:w-60 xl:w-1/4 h-12 border border-solid border-black-1 rounded-3xl p-3 shadow-lg"
   >
     <SearchOutlined />
     <div class="flex flex-nowrap flex-1 h-full text-base text-abn-yellow-1">

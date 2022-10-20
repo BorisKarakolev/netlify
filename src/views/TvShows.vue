@@ -1,7 +1,9 @@
 <template>
-  <div class="w-full text-white p-10 relative">
-    <h1 class="text-2xl mb-20">TV Shows</h1>
-    <div class="absolute right-10 top-10 w-1/5">
+  <div class="w-full flex flex-col items-center text-white p-10 relative">
+    <div
+      class="w-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
+    >
+      <h1 class="text-2xl mb-10">TV Shows</h1>
       <show-search :search-show="searchShow" />
     </div>
     <loading-outlined
@@ -14,13 +16,16 @@
       description="No Shows"
     />
     <div v-if="searchedShows && searchedShows.length > 0">
-      <div class="grid grid-cols-10 gap-3">
+      <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-10 gap-3">
         <div v-for="show in searchedShows" :key="show.show.id">
           <image-modal :show="show.show" />
         </div>
       </div>
     </div>
-    <div v-if="shows && shows.length > 0" class="space-y-5">
+    <div
+      v-if="shows && shows.length > 0"
+      class="space-y-5 text-center md:text-start xl:text-start"
+    >
       <dashboard-list
         :title="'Top 10 rated Tv Shows'"
         :shows="getTopRated(shows, 10)"
@@ -69,10 +74,10 @@ export default {
         .then((data) => {
           this.loading = false;
           this.shows = data;
-          console.log(data);
         })
         .catch((err) => {
           this.loading = false;
+          this.shows = null;
           console.log(err);
         });
     },
@@ -92,6 +97,7 @@ export default {
           })
           .catch((err) => {
             this.searching = false;
+            this.searchedShows = null;
             console.log(err);
           });
       }, 500);

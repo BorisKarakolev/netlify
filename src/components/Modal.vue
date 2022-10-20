@@ -4,7 +4,9 @@
       v-if="modalOpen"
       class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white"
     >
-      <div class="bg-black-1 w-full h-full md:w-1/2 md:h-4/5 rounded-xl fixed">
+      <div
+        class="bg-black-1 w-full h-full md:w-1/2 md:h-4/5 xl:w-2/5 rounded-xl fixed"
+      >
         <div
           class="absolute top-20 right-5 sm:top-3 sm:right-3 w-7 h-7 text-white bg-black-1 rounded-full flex items-center justify-center"
         >
@@ -57,22 +59,25 @@
               :key="episode.id"
               class="space-y-3 p-5 relative"
             >
-              <li class="flex flex-col xl:flex-row items-center justify-start xl:justify-start w-full">
+              <li
+                class="flex flex-col xl:flex-row items-center justify-start xl:justify-start w-full"
+              >
                 <span class="absolute top-3 right-3"
                   >{{ episode.runtime }}m</span
                 >
-                <div class="flex flex-row items-center justify-start w-full mb-3 xl:w-1/4 xl:mr-10">
+                <div
+                  class="flex flex-row items-center justify-start w-full mb-3 xl:w-1/4 xl:mr-10"
+                >
                   <span class="text-xl">{{ episode.number }}</span>
                   <img :src="episode.image?.medium" class="rounded-lg ml-5" />
                 </div>
-                <div class="w-full xl:w-3/4 xl:ml-5 xl:h-20 overflow-hidden truncate">
+                <div
+                  class="w-full xl:w-3/4 xl:ml-5 xl:h-20 overflow-hidden truncate"
+                >
                   <h2 class="text-xl">{{ episode.name }}</h2>
-                  <span class="text-sm"
-                    >{{
-                      episode.summary
-                        .replace(/<\/?[^>]+(>|$)/g, "")
-                    }}</span
-                  >
+                  <span class="text-sm">{{
+                    episode.summary.replace(/<\/?[^>]+(>|$)/g, "")
+                  }}</span>
                 </div>
               </li>
             </ul>
@@ -113,10 +118,10 @@ export default {
   },
   methods: {
     getEpisodes() {
-      fetch(`https://api.tvmaze.com/shows/${this.show.id}/episodes`)
-        .then((res) => res.json())
-        .then((data) => {
-          this.episodes = data;
+      this.axios
+        .get(`https://api.tvmaze.com/shows/${this.show.id}/episodes`)
+        .then((response) => {
+          this.episodes = response.data;
         })
         .catch((err) => {
           this.episodes = null;

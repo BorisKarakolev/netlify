@@ -1,20 +1,23 @@
 <template>
-  <div class="w-full flex flex-col items-center text-white p-10 relative">
+  <div
+    class="w-full h-full flex flex-col items-center text-white p-10 relative"
+  >
     <div
-      class="w-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
+      class="w-full h-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
     >
       <h1 class="text-2xl mb-10">TV Shows</h1>
       <show-search :search-show="searchShow" />
     </div>
     <loading-outlined
       v-if="loading"
-      class="w-full text-6xl flex items-center justify-center"
+      class="w-full h-full text-6xl flex items-center justify-center"
     />
-    <empty
+    <div
       v-if="!shows && !searchedShows && !searching"
       class="w-full text-6xl flex items-center justify-center"
-      description="No Shows"
-    />
+    >
+      Sorry, no shows for today :(
+    </div>
     <div v-if="searchedShows && searchedShows.length > 0">
       <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-10 gap-3">
         <div v-for="show in searchedShows" :key="show.show.id">
@@ -43,7 +46,6 @@ import DashboardList from "@/components/DashboardList.vue";
 import ShowSearch from "@/components/ShowSearch.vue";
 import ImageModal from "@/components/Image.vue";
 import { getTopRated, getGenres } from "@/utils/helpers";
-import { Empty } from "ant-design-vue";
 import { LoadingOutlined } from "@ant-design/icons-vue";
 export default {
   name: "TvShows",
@@ -52,7 +54,6 @@ export default {
     ShowSearch,
     ImageModal,
     LoadingOutlined,
-    Empty,
   },
   data() {
     return {
@@ -69,11 +70,11 @@ export default {
     fetchShows() {
       this.shows = null;
       this.loading = true;
-      fetch("https://api.tvmaze.com/shows")
-        .then((res) => res.json())
-        .then((data) => {
+      this.axios
+        .get("https://api.tvmaze.com/shows")
+        .then((response) => {
           this.loading = false;
-          this.shows = data;
+          this.shows = response.data;
         })
         .catch((err) => {
           this.loading = false;
@@ -85,11 +86,11 @@ export default {
       this.searchedShows = null;
       this.searching = true;
       setTimeout(() => {
-        fetch(`https://api.tvmaze.com/search/shows?q=${inputText}`)
-          .then((res) => res.json())
-          .then((data) => {
+        this.axios
+          .get(`https://api.tvmaze.com/search/shows?q=${inputText}`)
+          .then((response) => {
             this.searching = false;
-            this.searchedShows = data;
+            this.searchedShows = response.data;
             if (inputText === "") {
               this.fetchShows();
             }

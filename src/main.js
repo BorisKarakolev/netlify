@@ -1,8 +1,9 @@
 import { createApp } from "vue";
 import App from "@/App.vue";
 import router from "@/router";
+import axios from "axios";
+import VueAxios from "vue-axios";
 import Antd from "ant-design-vue";
-// import "ant-design-vue/dist/antd.css";
-import '@/assets/tailwind.css'
+import "@/assets/tailwind.css";
 
-createApp(App).use(router).use(Antd).mount("#app");
+createApp(App).use(router).use(VueAxios, axios).use(Antd).mount("#app");

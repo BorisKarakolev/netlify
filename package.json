@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "postcss": "^8",
     "tailwindcss": "^3",
     "vue": "^3.2.13",
+    "vue-axios": "^3.5.0",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

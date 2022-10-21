@@ -9,7 +9,7 @@
       <show-search :search-show="searchShow" />
     </div>
     <loading-outlined
-      v-if="loading"
+      v-if="loading && searching"
       class="w-full h-full text-6xl flex items-center justify-center"
     />
     <div

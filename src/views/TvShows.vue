@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-full h-full flex flex-col items-center text-white p-10 relative"
-  >
+  <div class="w-full h-full flex flex-col items-center text-white p-10">
     <div
       class="w-full h-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
     >
@@ -10,11 +8,11 @@
     </div>
     <loading-outlined
       v-if="loading && searching"
-      class="w-full h-full text-6xl flex items-center justify-center"
+      class="w-full h-full text-8xl absolute top-0 left-0 flex items-center justify-center"
     />
     <div
       v-if="!shows && !searchedShows && !searching"
-      class="w-full text-6xl flex items-center justify-center"
+      class="w-full text-6xl absolute top-0 left-0 flex items-center justify-center"
     >
       Sorry, no shows for today :(
     </div>
@@ -57,10 +55,10 @@ export default {
   },
   data() {
     return {
-      loading: true,
-      searching: true,
-      shows: null,
-      searchedShows: null,
+      shows: this.$store.state.shows,
+      searchedShows: this.$store.state.searchedShows,
+      loading: this.$store.state.loading,
+      searching: this.$store.state.searching,
     };
   },
   mounted() {
@@ -89,7 +87,7 @@ export default {
         this.axios
           .get(`https://api.tvmaze.com/search/shows?q=${inputText}`)
           .then((response) => {
-            this.searching = false;
+            this.searching = true;
             this.searchedShows = response.data;
             if (inputText === "") {
               this.fetchShows();
@@ -97,7 +95,7 @@ export default {
             this.shows = null;
           })
           .catch((err) => {
-            this.searching = false;
+            this.searching = true;
             this.searchedShows = null;
             console.log(err);
           });

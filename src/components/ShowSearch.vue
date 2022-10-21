@@ -7,11 +7,11 @@
     <div class="flex flex-nowrap flex-1 h-full text-base text-abn-yellow-1">
       <div class="relative flex items-center flex-1 h-full p-2">
         <input
+          v-model="inputText"
           type="text"
-          :value="inputText"
           placeholder="Find your show"
           class="w-full text-lg focus:outline-none bg-abn-green-2"
-          @input="searchShow(inputText = $event.target.value)"
+          @input="$store.dispatch('searchShow')"
         />
       </div>
     </div>
@@ -25,16 +25,15 @@ export default {
   components: {
     SearchOutlined,
   },
-  props: {
-    searchShow: {
-      type: Function,
-      required: true,
+  computed: {
+    inputText: {
+      get() {
+        return this.$store.state.inputText;
+      },
+      set(newSearch) {
+        this.$store.commit("SET_NEWSEARCH", newSearch);
+      },
     },
-  },
-  data() {
-    return {
-      inputText: "",
-    };
   },
 };
 </script>

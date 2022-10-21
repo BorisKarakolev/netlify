@@ -4,37 +4,48 @@
       class="w-full h-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
     >
       <h1 class="text-2xl mb-10">TV Shows</h1>
-      <show-search :search-show="searchShow" />
+      <show-search />
     </div>
     <loading-outlined
-      v-if="loading && searching"
+      v-if="$store.state.loading"
       class="w-full h-full text-8xl absolute top-0 left-0 flex items-center justify-center"
     />
     <div
-      v-if="!shows && !searchedShows && !searching"
-      class="w-full text-6xl absolute top-0 left-0 flex items-center justify-center"
+      v-if="
+        !$store.state.shows &&
+        !$store.state.loading &&
+        !$store.state.foundShows &&
+        !$store.state.searching
+      "
+      class="w-full h-full text-6xl absolute top-0 left-0 flex items-center justify-center"
     >
       Sorry, no shows for today :(
     </div>
-    <div v-if="searchedShows && searchedShows.length > 0">
-      <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-10 gap-3">
-        <div v-for="show in searchedShows" :key="show.show.id">
-          <image-modal :show="show.show" />
-        </div>
-      </div>
-    </div>
+    <found-shows />
     <div
-      v-if="shows && shows.length > 0"
+      v-if="$store.state.shows && $store.state.shows.length > 0"
       class="space-y-5 text-center md:text-start xl:text-start"
     >
       <dashboard-list
         :title="'Top 10 rated Tv Shows'"
-        :shows="getTopRated(shows, 10)"
+        :shows="getTopRated($store.state.shows, 10)"
       />
-      <dashboard-list :title="'Comedies'" :shows="getGenres(shows, 'Comedy')" />
-      <dashboard-list :title="'Actions'" :shows="getGenres(shows, 'Action')" />
-      <dashboard-list :title="'Sports'" :shows="getGenres(shows, 'Sports')" />
-      <dashboard-list :title="'Horrors'" :shows="getGenres(shows, 'Horror')" />
+      <dashboard-list
+        :title="'Comedies'"
+        :shows="getGenres($store.state.shows, 'Comedy')"
+      />
+      <dashboard-list
+        :title="'Actions'"
+        :shows="getGenres($store.state.shows, 'Action')"
+      />
+      <dashboard-list
+        :title="'Sports'"
+        :shows="getGenres($store.state.shows, 'Sports')"
+      />
+      <dashboard-list
+        :title="'Horrors'"
+        :shows="getGenres($store.state.shows, 'Horror')"
+      />
     </div>
   </div>
 </template>
@@ -42,7 +53,7 @@
 <script>
 import DashboardList from "@/components/DashboardList.vue";
 import ShowSearch from "@/components/ShowSearch.vue";
-import ImageModal from "@/components/Image.vue";
+import FoundShows from "@/components/FoundShows.vue";
 import { getTopRated, getGenres } from "@/utils/helpers";
 import { LoadingOutlined } from "@ant-design/icons-vue";
 export default {
@@ -50,57 +61,13 @@ export default {
   components: {
     DashboardList,
     ShowSearch,
-    ImageModal,
     LoadingOutlined,
-  },
-  data() {
-    return {
-      shows: this.$store.state.shows,
-      searchedShows: this.$store.state.searchedShows,
-      loading: this.$store.state.loading,
-      searching: this.$store.state.searching,
-    };
+    FoundShows,
   },
   mounted() {
-    this.fetchShows();
+    this.$store.dispatch("fetchShows");
   },
   methods: {
-    fetchShows() {
-      this.shows = null;
-      this.loading = true;
-      this.axios
-        .get("https://api.tvmaze.com/shows")
-        .then((response) => {
-          this.loading = false;
-          this.shows = response.data;
-        })
-        .catch((err) => {
-          this.loading = false;
-          this.shows = null;
-          console.log(err);
-        });
-    },
-    searchShow(inputText) {
-      this.searchedShows = null;
-      this.searching = true;
-      setTimeout(() => {
-        this.axios
-          .get(`https://api.tvmaze.com/search/shows?q=${inputText}`)
-          .then((response) => {
-            this.searching = true;
-            this.searchedShows = response.data;
-            if (inputText === "") {
-              this.fetchShows();
-            }
-            this.shows = null;
-          })
-          .catch((err) => {
-            this.searching = true;
-            this.searchedShows = null;
-            console.log(err);
-          });
-      }, 500);
-    },
     getTopRated,
     getGenres,
   },

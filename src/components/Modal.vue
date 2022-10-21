@@ -9,7 +9,7 @@
           class="bg-black-1 w-full h-full md:w-1/2 md:h-4/5 xl:w-2/5 rounded-xl fixed"
         >
           <div
-            class="absolute top-20 right-5 sm:top-3 sm:right-3 w-7 h-7 text-white bg-black-1 rounded-full flex items-center justify-center"
+            class="absolute top-20 right-5 sm:top-3 sm:right-3 w-7 h-7 text-white bg-black-1 rounded-full flex items-center justify-center z-10"
           >
             <CloseOutlined @click="close" />
           </div>

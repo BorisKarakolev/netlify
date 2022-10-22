@@ -32,6 +32,13 @@ export default {
       },
       set(newSearch) {
         this.$store.commit("SET_NEWSEARCH", newSearch);
+        if (newSearch === "") {
+          this.$router.push({ name: "TV Shows" });
+        }
+        this.$router.push({
+          name: "Found Shows",
+          params: { inputText: newSearch },
+        });
       },
     },
   },

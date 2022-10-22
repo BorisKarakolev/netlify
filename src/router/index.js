@@ -14,6 +14,11 @@ const routes = [
     component: TvShows,
   },
   {
+    path: "/tvshows/search/:inputText",
+    name: "Found Shows",
+    component: TvShows,
+  },
+  {
     path: "/movies",
     name: "Movies",
     component: ComingSoon,

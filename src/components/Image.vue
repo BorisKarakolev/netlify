@@ -1,10 +1,11 @@
 <template>
   <img :src="show.image?.medium" @click="toggleModal" />
-  <modal :close="toggleModal" :modal-open="modalOpen" :show="show" />
+  <modal ref="modal" :close="toggleModal" :modal-open="modalOpen" :show="show" />
 </template>
 
 <script>
 import Modal from "@/components/Modal.vue";
+import { onClickOutside } from "@vueuse/core";
 import { ref } from "vue";
 export default {
   name: "ImageModal",
@@ -19,12 +20,14 @@ export default {
   },
   setup() {
     const modalOpen = ref(false);
+    const modal = ref(null);
+    onClickOutside(modal, () => (modalOpen.value = false));
 
     const toggleModal = () => {
-      modalOpen.value = !modalOpen.value
-    }
+      modalOpen.value = !modalOpen.value;
+    };
 
-    return { modalOpen, toggleModal }
+    return { modalOpen, toggleModal, modal };
   },
 };
 </script>

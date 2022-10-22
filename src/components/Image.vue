@@ -1,6 +1,6 @@
 <template>
-  <img :src="show.image?.medium" @click="toggleModal" />
-  <modal ref="modal" :close="toggleModal" :modal-open="modalOpen" :show="show" />
+  <img :src="show.image?.medium" @click="openModal" />
+  <modal ref="modal" :close="closeModal" :modal-open="modalOpen" :show="show" />
 </template>
 
 <script>
@@ -23,11 +23,15 @@ export default {
     const modal = ref(null);
     onClickOutside(modal, () => (modalOpen.value = false));
 
-    const toggleModal = () => {
-      modalOpen.value = !modalOpen.value;
+    const closeModal = () => {
+      modalOpen.value = modalOpen.value = false;
     };
 
-    return { modalOpen, toggleModal, modal };
+    const openModal = () => {
+      modalOpen.value = modalOpen.value = true;
+    };
+
+    return { modalOpen, closeModal, modal, openModal };
   },
 };
 </script>

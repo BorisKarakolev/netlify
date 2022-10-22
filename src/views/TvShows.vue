@@ -21,14 +21,16 @@
     >
       Sorry, no shows for today :(
     </div>
-    <found-shows />
+    <div class="space-y-5 text-center md:text-start xl:text-start w-full">
+      <found-shows />
+    </div>
     <div
       v-if="$store.state.shows && $store.state.shows.length > 0"
-      class="space-y-5 text-center md:text-start xl:text-start"
+      class="space-y-5 text-center md:text-start xl:text-start w-full"
     >
       <dashboard-list
         :title="'Top 10 rated Tv Shows'"
-        :shows="getTopRated($store.state.shows, 10)"
+        :shows="getTopRated($store.state.shows)"
       />
       <dashboard-list
         :title="'Comedies'"

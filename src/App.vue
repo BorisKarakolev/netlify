@@ -22,4 +22,8 @@ export default {
 body {
   background-color: #005554;
 }
+
+.remove-scroll::-webkit-scrollbar {
+  display: none;
+}
 </style>

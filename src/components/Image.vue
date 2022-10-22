@@ -1,5 +1,5 @@
 <template>
-  <img :src="show.image?.medium" @click="openModal" />
+  <img :src="show.image?.medium" class="rounded-lg h-60 w-52" @click="openModal" />
   <modal ref="modal" :close="closeModal" :modal-open="modalOpen" :show="show" />
 </template>
 

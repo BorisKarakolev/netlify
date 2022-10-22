@@ -135,10 +135,6 @@ export default {
 </script>
 
 <style>
-.remove-scroll::-webkit-scrollbar {
-  display: none;
-}
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.3s ease-out;

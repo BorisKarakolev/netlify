@@ -1,13 +1,10 @@
 <template>
   <h1 class="mb-5 text-lg">{{ title }}</h1>
   <div
-    class="grid grid-flow-col auto-cols-max gap-3 overflow-x-auto remove-scroll snap-x snap-mandatory overscroll-x-contain"
+    v-dragscroll
+    class="grid grid-flow-col auto-cols-max gap-3 remove-scroll overflow-x-auto overscroll-x-contain"
   >
-    <div
-      v-for="show in shows"
-      :key="show.id"
-      class="snap-normal snap-center sm:snap-start"
-    >
+    <div v-for="show in shows" :key="show.id">
       <image-modal :show="show" />
     </div>
   </div>
@@ -15,10 +12,14 @@
 
 <script>
 import ImageModal from "@/components/Image.vue";
+import { dragscroll } from "vue-dragscroll";
 export default {
   name: "DashboardList",
   components: {
     ImageModal,
+  },
+  directives: {
+    dragscroll: dragscroll,
   },
   props: {
     shows: { type: Array, required: true },

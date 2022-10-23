@@ -13,7 +13,7 @@ Current versions using on the project.
 Get the code by either cloning this repository using git
 
 ```
-> git@github.com:BorisKarakolev/netlify.git
+git@github.com:BorisKarakolev/netlify.git
 ```
 
 ... or downloading <a href='https://github.com/BorisKarakolev/netlify/archive/refs/heads/master.zip' target='_blank'>source code</a> as a zip archive.

@@ -3,7 +3,7 @@
     <transition>
       <div
         v-if="modalOpen"
-        class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white"
+        class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white z-10"
       >
         <div
           class="bg-black-1 w-full h-full md:w-1/2 md:h-4/5 xl:w-2/5 rounded-xl fixed"

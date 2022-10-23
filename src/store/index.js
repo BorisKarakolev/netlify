@@ -61,7 +61,7 @@ export default createStore({
             commit("SET_FOUNDSHOWS", null);
             console.log(err);
           });
-      }, 700);
+      }, 500);
     },
   },
 });

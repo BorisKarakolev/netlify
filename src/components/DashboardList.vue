@@ -1,25 +1,20 @@
 <template>
   <h1 class="mb-5 text-lg">{{ title }}</h1>
-  <div
-    v-dragscroll
-    class="grid grid-flow-col auto-cols-max gap-3 remove-scroll overflow-x-auto overscroll-x-contain"
-  >
+  <vue-horizontal responsive>
     <div v-for="show in shows" :key="show.id">
       <image-modal :show="show" />
     </div>
-  </div>
+  </vue-horizontal>
 </template>
 
 <script>
 import ImageModal from "@/components/Image.vue";
-import { dragscroll } from "vue-dragscroll";
+import VueHorizontal from "vue-horizontal";
 export default {
   name: "DashboardList",
   components: {
     ImageModal,
-  },
-  directives: {
-    dragscroll: dragscroll,
+    VueHorizontal,
   },
   props: {
     shows: { type: Array, required: true },

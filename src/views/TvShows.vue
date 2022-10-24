@@ -21,9 +21,7 @@
     >
       Sorry, no shows for today :(
     </div>
-    <div class="space-y-5 text-center md:text-start xl:text-start w-full">
-      <found-shows />
-    </div>
+    <found-shows />
     <div
       v-if="$store.state.shows && $store.state.shows.length > 0"
       class="space-y-5 text-center md:text-start xl:text-start w-full"

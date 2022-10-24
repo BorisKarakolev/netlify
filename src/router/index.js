@@ -9,13 +9,8 @@ const routes = [
     component: ComingSoon,
   },
   {
-    path: "/tvshows",
+    path: "/tvshows/:inputText?",
     name: "TV Shows",
-    component: TvShows,
-  },
-  {
-    path: "/tvshows/search/:inputText?",
-    name: "Found Shows",
     component: TvShows,
   },
   {

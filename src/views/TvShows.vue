@@ -66,7 +66,7 @@ export default {
     LoadingOutlined,
     FoundShows,
   },
-  mounted() {
+  beforeMount() {
     this.$store.dispatch("fetchShows");
   },
   methods: {

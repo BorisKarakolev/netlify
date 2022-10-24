@@ -32,11 +32,12 @@ export default {
       },
       set(newSearch) {
         if (newSearch === "") {
+          //Change this with two components separate and query
           this.$router.push({ name: "TV Shows" });
         }
         this.$store.commit("SET_NEWSEARCH", newSearch);
         this.$router.push({
-          name: "Found Shows",
+          name: "TV Shows",
           params: { inputText: newSearch },
         });
       },

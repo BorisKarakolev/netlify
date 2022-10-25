@@ -50,10 +50,10 @@ export default createStore({
           .get(`https://api.tvmaze.com/search/shows?q=${state.inputText}`)
           .then((response) => {
             commit("SET_SEARCHING", false);
-            commit("SET_FOUNDSHOWS", response.data);
             if (state.inputText === "") {
               dispatch("fetchShows");
             }
+            commit("SET_FOUNDSHOWS", response.data);
             commit("SET_SHOWS", null);
           })
           .catch((err) => {

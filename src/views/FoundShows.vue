@@ -26,8 +26,5 @@ export default {
     ImageModal,
     VueHorizontal,
   },
-  beforeMount() {
-    this.$store.dispatch("searchShow");
-  },
 };
 </script>

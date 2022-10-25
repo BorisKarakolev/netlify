@@ -27,7 +27,7 @@ export default {
     VueHorizontal,
   },
   beforeMount() {
-    this.$store.dispatch('searchShow')
-  }
+    this.$store.dispatch("searchShow");
+  },
 };
 </script>

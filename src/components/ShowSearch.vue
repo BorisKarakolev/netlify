@@ -1,8 +1,7 @@
 <template>
-  <!-- On submit save the data to show in FoundShows -->
   <form
     class="flex items-center w-full md:w-60 xl:w-1/4 h-12 bg-abn-green-1 border border-solid border-black-1 rounded-3xl p-3 shadow-xl"
-    @submit.prevent
+    @submit.prevent="onSubmit"
   >
     <SearchOutlined class="text-xl" />
     <div class="flex flex-nowrap flex-1 h-full text-base text-abn-yellow-1">
@@ -42,5 +41,11 @@ export default {
       },
     },
   },
-};
+  methods: {
+    onSubmit() {
+      this.$router.push({name: 'Found Shows', query: {q: this.$store.state.inputText}})
+      this.$store.commit('SET_NEWSEARCH', '')
+    }
+  }
+ };
 </script>

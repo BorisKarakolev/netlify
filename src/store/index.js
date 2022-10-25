@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import axios from "axios";
 
 export default createStore({
@@ -9,6 +10,11 @@ export default createStore({
     searching: false,
     inputText: "",
   },
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
   mutations: {
     SET_SHOWS(state, shows) {
       state.shows = shows;

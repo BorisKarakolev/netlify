@@ -1,7 +1,7 @@
 <template>
   <!-- On submit save the data to show in FoundShows -->
   <form
-    class="flex items-center w-full md:w-60 xl:w-1/4 h-12 bg-abn-green-1 border border-solid border-black-1 rounded-3xl p-3 shadow-xl place-content-end"
+    class="flex items-center w-full md:w-60 xl:w-1/4 h-12 bg-abn-green-1 border border-solid border-black-1 rounded-3xl p-3 shadow-xl"
     @submit.prevent
   >
     <SearchOutlined class="text-xl" />
@@ -11,7 +11,7 @@
           v-model="inputText"
           type="text"
           placeholder="Find your show"
-          class="w-full text-lg focus:outline-none bg-abn-green-1 placeholder:text-black-1"
+          class="w-full text-lg focus:outline-none bg-abn-green-1 sm:placeholder:text-black-1"
         />
       </div>
     </div>

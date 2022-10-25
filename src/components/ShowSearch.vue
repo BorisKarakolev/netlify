@@ -1,6 +1,6 @@
 <template>
   <form
-    class="flex items-center w-60 h-8 bg-transparent border border-solid border-black-1 rounded-3xl p-2 shadow-xl"
+    class="flex items-center w-60 h-8 bg-transparent border border-solid border-black-1 rounded-3xl p-2 shadow-xl active:scale-110 focus-within:scale-105 transition-all duration-150 ease-in"
     @submit.prevent="onSubmit"
   >
     <SearchOutlined class="text-xl" />

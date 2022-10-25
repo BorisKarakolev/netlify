@@ -60,7 +60,7 @@ export default {
   },
   beforeMount() {
     this.$store.dispatch("fetchShows");
-    this.$store.state.foundShows = null
+    this.$store.commit('SET_NEWSEARCH', '')
   },
   methods: {
     getTopRated,

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TvShows from "@/views/TvShows.vue";
-import FoundShows from '@/components/FoundShows.vue'
+import FoundShows from '@/views/FoundShows.vue'
 import ComingSoon from "@/components/ComingSoon.vue";
 
 const routes = [

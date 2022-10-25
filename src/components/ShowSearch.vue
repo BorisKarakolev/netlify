@@ -1,6 +1,6 @@
 <template>
   <form
-    class="flex items-center w-1/2 md:w-60 xl:w-60 h-10 bg-transparent border border-solid border-black-1 rounded-3xl p-3 shadow-xl absolute top-40 left-1/4 sm:top-3 sm:left-2/3 lg:left-3/4"
+    class="flex items-center w-60 h-8 bg-transparent border border-solid border-black-1 rounded-3xl p-2 shadow-xl"
     @submit.prevent="onSubmit"
   >
     <SearchOutlined class="text-xl" />
@@ -10,7 +10,7 @@
           v-model="inputText"
           type="text"
           placeholder="Find your show"
-          class="w-full text-lg focus:outline-none bg-transparent sm:placeholder:text-black-1"
+          class="w-full text-lg focus:outline-none bg-transparent placeholder:text-black-1"
           @input="$store.dispatch('searchShow')"
         />
       </div>

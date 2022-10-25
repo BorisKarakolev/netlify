@@ -11,6 +11,7 @@
           type="text"
           placeholder="Find your show"
           class="w-full text-lg focus:outline-none bg-transparent sm:placeholder:text-black-1"
+          @input="$store.dispatch('searchShow')"
         />
       </div>
     </div>
@@ -43,9 +44,12 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$router.push({name: 'Found Shows', query: {q: this.$store.state.inputText}})
-      this.$store.commit('SET_NEWSEARCH', '')
-    }
-  }
- };
+      this.$router.push({
+        name: "Found Shows",
+        query: { q: this.$store.state.inputText },
+      });
+      this.$store.commit("SET_NEWSEARCH", "");
+    },
+  },
+};
 </script>

@@ -13,8 +13,8 @@
           }}</router-link>
         </div>
       </div>
-      <show-search />
     </div>
+    <show-search />
   </header>
 </template>
 

@@ -42,7 +42,7 @@ export default createStore({
           console.log(err);
         });
     },
-    searchShow({ commit, dispatch, state }) {
+    searchShow({ commit, state }) {
       commit("SET_SEARCHING", true);
       commit("SET_FOUNDSHOWS", null);
       setTimeout(() => {
@@ -50,11 +50,7 @@ export default createStore({
           .get(`https://api.tvmaze.com/search/shows?q=${state.inputText}`)
           .then((response) => {
             commit("SET_SEARCHING", false);
-            if (state.inputText === "") {
-              dispatch("fetchShows");
-            }
             commit("SET_FOUNDSHOWS", response.data);
-            commit("SET_SHOWS", null);
           })
           .catch((err) => {
             commit("SET_SEARCHING", false);

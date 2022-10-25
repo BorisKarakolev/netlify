@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TvShows from "@/views/TvShows.vue";
+import FoundShows from '@/components/FoundShows.vue'
 import ComingSoon from "@/components/ComingSoon.vue";
 
 const routes = [
@@ -9,9 +10,14 @@ const routes = [
     component: ComingSoon,
   },
   {
-    path: "/tvshows/:inputText?",
+    path: "/tvshows",
     name: "TV Shows",
     component: TvShows,
+  },
+  {
+    path: "/search",
+    name: "Found Shows",
+    component: FoundShows,
   },
   {
     path: "/movies",

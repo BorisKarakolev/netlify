@@ -1,17 +1,17 @@
 <template>
+  <!-- On submit save the data to show in FoundShows -->
   <form
-    class="flex items-center w-full md:w-60 xl:w-1/4 h-12 border border-solid border-black-1 rounded-3xl p-3 shadow-lg"
-    @:submit.prevent
+    class="flex items-center w-full md:w-60 xl:w-1/4 h-12 bg-abn-green-1 border border-solid border-black-1 rounded-3xl p-3 shadow-xl place-content-end"
+    @submit.prevent
   >
-    <SearchOutlined />
+    <SearchOutlined class="text-xl" />
     <div class="flex flex-nowrap flex-1 h-full text-base text-abn-yellow-1">
       <div class="relative flex items-center flex-1 h-full p-2">
         <input
           v-model="inputText"
           type="text"
           placeholder="Find your show"
-          class="w-full text-lg focus:outline-none bg-abn-green-2"
-          @input="$store.dispatch('searchShow')"
+          class="w-full text-lg focus:outline-none bg-abn-green-1 placeholder:text-black-1"
         />
       </div>
     </div>
@@ -32,13 +32,12 @@ export default {
       },
       set(newSearch) {
         if (newSearch === "") {
-          //Change this with two components separate and query
-          this.$router.push({ name: "TV Shows" });
+          return this.$router.push({ name: "TV Shows" });
         }
         this.$store.commit("SET_NEWSEARCH", newSearch);
-        this.$router.push({
-          name: "TV Shows",
-          params: { inputText: newSearch },
+        return this.$router.push({
+          name: "Found Shows",
+          query: { q: newSearch },
         });
       },
     },

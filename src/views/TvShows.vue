@@ -4,7 +4,6 @@
       class="w-full h-full flex flex-col md:flex-row xl:flex-row items-center justify-center md:justify-between xl:justify-between mb-10"
     >
       <h1 class="text-2xl mb-10">TV Shows</h1>
-      <show-search />
     </div>
     <loading-outlined
       v-if="$store.state.loading"
@@ -21,7 +20,6 @@
     >
       Sorry, no shows for today :(
     </div>
-    <found-shows />
     <div
       v-if="$store.state.shows && $store.state.shows.length > 0"
       class="space-y-5 text-center md:text-start xl:text-start w-full"
@@ -52,20 +50,17 @@
 
 <script>
 import DashboardList from "@/components/DashboardList.vue";
-import ShowSearch from "@/components/ShowSearch.vue";
-import FoundShows from "@/components/FoundShows.vue";
 import { getTopRated, getGenres } from "@/utils/helpers";
 import { LoadingOutlined } from "@ant-design/icons-vue";
 export default {
   name: "TvShows",
   components: {
     DashboardList,
-    ShowSearch,
     LoadingOutlined,
-    FoundShows,
   },
   beforeMount() {
     this.$store.dispatch("fetchShows");
+    this.$store.state.foundShows = null
   },
   methods: {
     getTopRated,

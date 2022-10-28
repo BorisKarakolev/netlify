@@ -36,17 +36,17 @@
               <div class="text-sm flex flex-col font-thin px-3">
                 <div class="flex flex-row space-x-1">
                   <span class="text-gray-1">Genres:</span>
-                  <div v-for="genre in show.genres" :key="genre">
-                    {{ genre }},
+                  <div v-for="genre, index in show.genres" :key="genre">
+                    {{ `${(index ? ', ' : '')}${genre}` }}
                   </div>
                 </div>
                 <div class="flex w-full flex-row space-x-2">
                   <span class="text-gray-1">Average runtime:</span>
-                  <span>{{ show.averageRuntime }}'</span>
+                  <span>{{ show.averageRuntime }}m</span>
                 </div>
                 <div class="flex w-full flex-row space-x-2">
                   <span class="text-gray-1">Language:</span>
-                  <span>{{ show.language }}'</span>
+                  <span>{{ show.language }}</span>
                 </div>
               </div>
             </div>

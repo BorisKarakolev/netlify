@@ -6,7 +6,7 @@
       <h1 class="text-2xl mb-10">TV Shows</h1>
     </div>
     <loading-outlined
-      v-if="$store.state.loading"
+      v-if="$store.state.loading && !$store.state.searching"
       class="w-full h-full text-8xl absolute top-0 left-0 flex items-center justify-center"
     />
     <div

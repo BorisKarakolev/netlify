@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TvShows from "@/views/TvShows.vue";
 import FoundShows from "@/views/FoundShows.vue";
-import Movies from "@/views/Movies.vue";
 import ComingSoon from "@/components/ComingSoon.vue";
 
 const routes = [
@@ -23,7 +22,7 @@ const routes = [
   {
     path: "/movies",
     name: "Movies",
-    component: Movies,
+    component: ComingSoon,
   },
 ];
 

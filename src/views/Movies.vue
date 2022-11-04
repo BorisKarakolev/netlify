@@ -1,12 +1,9 @@
 <template>
-  <h1>{{ $store.state.moives }}</h1>
+  <h1>Movies are coming soon</h1>
 </template>
 
 <script>
 export default {
   name: "MoviesView",
-  beforeMount() {
-    this.$store.dispatch("fetchMovies");
-  },
 };
 </script>
